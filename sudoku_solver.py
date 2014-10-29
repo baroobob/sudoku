@@ -22,9 +22,9 @@ def sudoku_from_csv(file_name):
                 exit(error_message)
     except:
         exit(error_message)
-    if len(data_list != 81):
-        exit(error_message)
     data = numpy.array(data_list)
+    if data.size != 81:
+        exit(error_message)
     return data
 
 def valid_sudoku_solution(data):
@@ -72,11 +72,5 @@ if __name__ == '__main__':
     sudoku_puzzle = sudoku_from_csv(FILE_NAME)
     print sudoku_puzzle
     print
-
-    
-    #for i,region in enumerate(regions):
-        #print "Region", i 
-        #print region
-
     print valid_sudoku_solution(sudoku_puzzle)
 
