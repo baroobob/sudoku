@@ -257,7 +257,7 @@ class Sudoku(object):
                         region_list.extend(possible_values)
                 # if a number is in the list only once add it
                 # in the only location possible
-                for number in range(1,10):
+                for number in range(1, 10):
                     if region_list.count(number) == 1:
                         # found a number that can only go in one location
                         keep_going = True
@@ -266,7 +266,7 @@ class Sudoku(object):
                             if number in possible_values:
                                 self._solution[location] = number
                                 if verbose:
-                                    print "Adding", number, 
+                                    print "Adding", number,
                                     print "at row", location[0] + 1,
                                     print "column", location[1] + 1,
                                     print "- only possible location for this",
@@ -280,14 +280,13 @@ class Sudoku(object):
                 # how many times each number occurs
                 locations = []
                 row_list = []
-                row_lists = []
                 for column in range(9):
                     locations.append((row, column))
                     possible_values = self._possible_values[row][column]
                     row_list.extend(possible_values)
                 # if a number is in the list only once add it
                 # in the only location possible
-                for number in range(1,10):
+                for number in range(1, 10):
                     if row_list.count(number) == 1:
                         # found a number that can only go in one location
                         keep_going = True
@@ -296,7 +295,7 @@ class Sudoku(object):
                             if number in possible_values:
                                 self._solution[location] = number
                                 if verbose:
-                                    print "Adding", number, 
+                                    print "Adding", number,
                                     print "at row", location[0] + 1,
                                     print "column", location[1] + 1,
                                     print "- only possible location for this",
@@ -317,7 +316,7 @@ class Sudoku(object):
                     column_list.extend(possible_values)
                 # if a number is in the list only once add it
                 # in the only location possible
-                for number in range(1,10):
+                for number in range(1, 10):
                     if column_list.count(number) == 1:
                         # found a number that can only go in one location
                         keep_going = True
@@ -326,7 +325,7 @@ class Sudoku(object):
                             if number in possible_values:
                                 self._solution[location] = number
                                 if verbose:
-                                    print "Adding", number, 
+                                    print "Adding", number,
                                     print "at row", location[0] + 1,
                                     print "column", location[1] + 1,
                                     print "- only possible location for this",
@@ -364,16 +363,16 @@ class Sudoku(object):
             last_number_removed = self._solution[location]
             self._puzzle[location] = 0
             # have to update solution too to loop with solve()
-            self._solution[:,:] = self._puzzle[:,:]
+            self._solution[:, :] = self._puzzle[:, :]
             self._update_possible_values()
             locations.remove(location)
             solvable = self.solve(verbose=False)
-            
+
         # put back the last number removed so the puzzle can be solved
         self._puzzle[location] = last_number_removed
-        self._solution[:,:] = self._puzzle[:,:]
+        self._solution[:, :] = self._puzzle[:, :]
         self._update_possible_values()
-        
+
 
     def _new_solution(self):
         """ Generate a Sudoku solution from scratch. """
